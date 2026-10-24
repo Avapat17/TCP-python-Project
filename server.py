@@ -14,7 +14,7 @@ clients=[]
 names=[]
 
 def sendingmessages(message):
-    for client in clients:
+    for client in list(clients):
         try:
             client.send(message)
         except:
