@@ -31,12 +31,13 @@ def handle_client(client):
                 raise Exception("Discontected")
             sendingmessages(message)
         except:
-            index = clients.index(client)
-            clients.remove(client)
-            client.close()
-            name=names[index]
-            sendingmessages(f'{name} left the chat.'.encode('utf-8'))
-            names.remove(name)
+       if client in clients:
+                index = clients.index(client)
+                clients.remove(client)
+                client.close()
+                name=names[index]
+                sendingmessages(f'{name} left the chat.'.encode('utf-8'))
+                names.remove(name)
             break
 def receive_con():
     print(f"server is running and listening on {HOST}:{PORT}")
